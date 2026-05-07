@@ -28,6 +28,9 @@ curl -L -o C:\AlienAutomation\vscode.exe https://update.code.visualstudio.com/la
 echo Installing VS Code...
 C:\AlienAutomation\vscode.exe /silent
 
+echo Applying Aliens Theme...
+mkdir "%APPDATA%\Code - Insiders\User"
+echo { "workbench.colorTheme": "Dark ( Aliens Theme)" } > "%APPDATA%\Code - Insiders\User\settings.json"
 
 echo Enabling Dark Theme...
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f
