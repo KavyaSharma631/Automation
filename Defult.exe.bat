@@ -22,10 +22,6 @@ REM BFCPEWTITLE=Window Title
 REM BFCPEOPTIONEND
 @echo off
 
-echo Creating AlienAutomation Folder...
-mkdir C:\AlienAutomation
-
-
 echo Downloading VS Code...
 curl -L -o C:\AlienAutomation\vscode.exe https://update.code.visualstudio.com/latest/win32-x64-user/insider
 
