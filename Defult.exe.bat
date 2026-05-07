@@ -43,11 +43,16 @@ echo.
 set /p NEWPCNAME=Enter New PC Name: 
 wmic computersystem where name="%computername%" call rename name="%NEWPCNAME%"
 
+@echo off
+
+echo Current User:
+whoami
+
 echo.
-set /p USERNAME=Enter Username: 
-set /p NEWPASS=Enter New Password: 
+set /p NEWPASS=Enter New Password:
 
-net user "%USERNAME%" "%NEWPASS%"
+net user Administrator "%NEWPASS%"
 
+echo.
 echo Password Changed Successfully
 pause
