@@ -21,6 +21,22 @@ REM BFCPEWINDOWWIDTH=120
 REM BFCPEWTITLE=Window Title
 REM BFCPEOPTIONEND
 @echo off
+
+echo Generating SSH Key...
+ssh-keygen -t rsa -b 4096 -C "ianilcyborg@gmail.com"
+
+echo.
+echo SSH Generate ho Gyi h Add kr de !
+set /p SSHDONE=Type Done After Adding SSH Key: 
+
+if /I NOT "%SSHDONE%"=="Done" (
+    echo Wrong Input
+    pause
+    exit
+)
+
+mkdir C:\Aliens
+
 cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/.github.git
 cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Cyborg.git
 
@@ -37,4 +53,5 @@ cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/.Alien.git
 cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/WebOS.git
 cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/WebApp.git
 cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/WebSDK.git
+
 pause
