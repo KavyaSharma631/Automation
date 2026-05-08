@@ -47,3 +47,13 @@ RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 echo.
 set /p NEWPCNAME=Enter New PC Name: 
 wmic computersystem where name="%computername%" call rename name="%NEWPCNAME%"
+
+
+echo Showing user list...
+net user
+
+echo Showing Administrator details...
+net user administrator
+
+echo Changing Administrator Password...
+net user administrator *
