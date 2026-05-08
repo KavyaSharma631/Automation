@@ -33,6 +33,10 @@ curl -L -o C:\AlienAutomation\vscode.exe https://update.code.visualstudio.com/la
 echo Installing VS Code...
 C:\AlienAutomation\vscode.exe /silent
 
+echo Installing Python...
+winget install --id Python.Python.3.12 -e --source winget
+echo Python installation completed.
+
 echo Enabling Dark Theme...
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /f
