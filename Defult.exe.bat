@@ -50,6 +50,10 @@ net user administrator
 echo Changing Administrator Password...
 net user administrator *
 
+echo Installing Python...
+winget install --id Python.Python.3.12 -e --source winget
+echo Python installation completed.
+
 echo Downloading VS Code...
 curl -L -o C:\Automation\vscode.exe https://update.code.visualstudio.com/latest/win32-x64-user/insider
 
