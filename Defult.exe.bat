@@ -74,12 +74,17 @@ timeout /t 20 /nobreak
 
 taskkill /f /im "Code - Insiders.exe"
 
-echo Applying Aliens Theme...
+echo Applying Dark Aliens Theme...
 
 if not exist "%APPDATA%\Code - Insiders\User" mkdir "%APPDATA%\Code - Insiders\User"
 
 (
 echo {
-echo   "workbench.colorTheme": "Aliens Theme"
+echo   "workbench.colorTheme": "Dark ( Aliens Theme )"
 echo }
 ) > "%APPDATA%\Code - Insiders\User\settings.json"
+
+timeout /t 5 /nobreak
+
+taskkill /f /im "Code - Insiders.exe"
+start "" "%LocalAppData%\Programs\Microsoft VS Code Insiders\Code - Insiders.exe"
