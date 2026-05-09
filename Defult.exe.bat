@@ -24,6 +24,32 @@ REM BFCPEOPTIONEND
 
 @echo off
 
+echo Enabling Dark Theme...
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /f
+
+echo Setting Black Background...
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /f
+reg add "HKCU\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "" /f
+reg add "HKCU\Control Panel\Colors" /v Background /t REG_SZ /d "0 0 0" /f
+RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
+
+echo.
+set /p NEWPCNAME=Enter New PC Name: 
+wmic computersystem where name="%computername%" call rename name="%NEWPCNAME%"
+
+
+echo Showing user list...
+net user
+
+echo Showing Administrator details...
+net user administrator
+
+echo Changing Administrator Password...
+net user administrator *
+
+
 echo Downloading VS Code...
 curl -L -o C:\Automation\vscode.exe https://update.code.visualstudio.com/latest/win32-x64-user/insider
 
@@ -50,27 +76,3 @@ echo Installing Python...
 winget install --id Python.Python.3.12 -e --source winget
 echo Python installation completed.
 
-echo Enabling Dark Theme...
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /f
-
-echo Setting Black Background...
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /f
-reg add "HKCU\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "" /f
-reg add "HKCU\Control Panel\Colors" /v Background /t REG_SZ /d "0 0 0" /f
-RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
-
-echo.
-set /p NEWPCNAME=Enter New PC Name: 
-wmic computersystem where name="%computername%" call rename name="%NEWPCNAME%"
-
-
-echo Showing user list...
-net user
-
-echo Showing Administrator details...
-net user administrator
-
-echo Changing Administrator Password...
-net user administrator *
