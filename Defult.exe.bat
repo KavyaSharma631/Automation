@@ -63,18 +63,19 @@ call "%LocalAppData%\Programs\Microsoft VS Code Insiders\bin\code-insiders.cmd" 
 
 timeout /t 10 /nobreak
 
+echo Opening VS Code First Time...
+start "" "%LocalAppData%\Programs\Microsoft VS Code Insiders\Code - Insiders.exe"
+
+timeout /t 15 /nobreak
+
+taskkill /f /im "Code - Insiders.exe"
+
 echo Applying Aliens Theme...
-mkdir "%APPDATA%\Code - Insiders\User"
+
+if not exist "%APPDATA%\Code - Insiders\User" mkdir "%APPDATA%\Code - Insiders\User"
 
 (
 echo {
 echo   "workbench.colorTheme": "Dark ( Aliens Theme )"
 echo }
 ) > "%APPDATA%\Code - Insiders\User\settings.json"
-
-echo Installing Python...
-winget install --id Python.Python.3.12 -e --source winget
-
-echo Python installation completed.
-
-pause
