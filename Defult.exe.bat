@@ -63,14 +63,14 @@ start /wait C:\Automation\vscode.exe /silent
 timeout /t 25 /nobreak
 
 echo Installing Aliens Theme...
-call "%LocalAppData%\Programs\Microsoft VS Code Insiders\bin\code-insiders.cmd" --install-extension HimanshuNayak.aliens-themes
-
-timeout /t 10 /nobreak
-
-echo Opening VS Code First Time...
-start "" "%LocalAppData%\Programs\Microsoft VS Code Insiders\Code - Insiders.exe"
+call "%LocalAppData%\Programs\Microsoft VS Code Insiders\bin\code-insiders.cmd" --install-extension HimanshuNayak.theme-Aliens
 
 timeout /t 15 /nobreak
+
+echo Opening VS Code...
+start "" "%LocalAppData%\Programs\Microsoft VS Code Insiders\Code - Insiders.exe"
+
+timeout /t 20 /nobreak
 
 taskkill /f /im "Code - Insiders.exe"
 
@@ -80,6 +80,6 @@ if not exist "%APPDATA%\Code - Insiders\User" mkdir "%APPDATA%\Code - Insiders\U
 
 (
 echo {
-echo   "workbench.colorTheme": "Dark ( Aliens Theme )"
+echo   "workbench.colorTheme": "Aliens Theme"
 echo }
 ) > "%APPDATA%\Code - Insiders\User\settings.json"
