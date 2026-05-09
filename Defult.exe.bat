@@ -56,7 +56,6 @@ curl -L -o C:\Automation\vscode.exe https://update.code.visualstudio.com/latest/
 echo Installing VS Code...
 start /wait C:\Automation\vscode.exe /silent
 
-timeout /t 20 /nobreak
 
 echo Installing Aliens Theme...
 "%LocalAppData%\Programs\Microsoft VS Code Insiders\bin\code-insiders.cmd" --install-extension HimanshuNayak.aliens-themes
