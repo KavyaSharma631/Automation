@@ -47,7 +47,6 @@ cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Blog.git
 cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Report.git
 cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Attendance.git
 cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Secret.git
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Tools.git
 
 cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/.Alien.git
 cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/WebOS.git
