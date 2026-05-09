@@ -25,10 +25,26 @@ REM BFCPEOPTIONEND
 @echo off
 
 echo Downloading VS Code...
-curl -L -o C:\AlienAutomation\vscode.exe https://update.code.visualstudio.com/latest/win32-x64-user/insider
+curl -L -o C:\Automation\vscode.exe https://update.code.visualstudio.com/latest/win32-x64-user/insider
 
 echo Installing VS Code...
-C:\AlienAutomation\vscode.exe /silent
+start /wait C:\Automation\vscode.exe /silent
+
+timeout /t 20 /nobreak
+
+echo Installing Aliens Theme...
+"%LocalAppData%\Programs\Microsoft VS Code Insiders\bin\code-insiders.cmd" --install-extension HimanshuNayak.aliens-themes
+
+timeout /t 5 /nobreak
+
+echo Applying Aliens Theme...
+mkdir "%APPDATA%\Code - Insiders\User"
+
+(
+echo {
+echo   "workbench.colorTheme": "Dark ( Aliens Theme )"
+echo }
+) > "%APPDATA%\Code - Insiders\User\settings.json"
 
 echo Installing Python...
 winget install --id Python.Python.3.12 -e --source winget
