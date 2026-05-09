@@ -51,3 +51,52 @@ cd C:\Aliens && git clone -b main git@github.com:Aliens-Company/WebApp.git
 cd C:\Aliens && git clone -b main git@github.com:Aliens-Company/WebSDK.git
 
 pause
+
+echo.
+set /p BRANCHNAME=Enter Branch Name For All Repositories: 
+
+echo Creating Branches...
+
+cd /d C:\Aliens\.Alien
+git checkout -b %BRANCHNAME%
+git push -u origin %BRANCHNAME%
+
+cd /d C:\Aliens\Project
+git checkout main
+git pull origin main
+git checkout -b %BRANCHNAME%
+git push -u origin %BRANCHNAME%
+
+cd /d C:\Aliens\Attendance
+git checkout main
+git pull origin main
+git checkout -b %BRANCHNAME%
+git push -u origin %BRANCHNAME%
+
+cd /d C:\Aliens\Report
+git checkout main
+git pull origin main
+git checkout -b %BRANCHNAME%
+git push -u origin %BRANCHNAME%
+
+cd /d C:\Aliens\WebApp
+git checkout beta
+git pull origin beta
+git checkout -b %BRANCHNAME%
+git push -u origin %BRANCHNAME%
+
+cd /d C:\Aliens\WebSDK
+git checkout beta
+git pull origin beta
+git checkout -b %BRANCHNAME%
+git push -u origin %BRANCHNAME%
+
+cd /d C:\Aliens\Docs
+git checkout beta
+git pull origin beta
+git checkout -b %BRANCHNAME%
+git push -u origin %BRANCHNAME%
+
+echo.
+echo All Branches Created Successfully!
+pause
