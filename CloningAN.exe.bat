@@ -20,6 +20,7 @@ REM BFCPEWINDOWHEIGHT=30
 REM BFCPEWINDOWWIDTH=120
 REM BFCPEWTITLE=Window Title
 REM BFCPEOPTIONEND
+
 @echo off
 
 echo Generating SSH Key...
@@ -37,31 +38,55 @@ if /I NOT "%SSHDONE%"=="Done" (
 
 mkdir C:\Aliens
 
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/.github.git
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Cyborg.git
+echo Cloning Repositories...
 
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Copilot.git
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Project.git
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Docs.git
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Blog.git
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Report.git
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Attendance.git
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Secret.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/.github.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Cyborg.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Copilot.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Project.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Docs.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Blog.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Report.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Attendance.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Secret.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/.Alien.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/WebOS.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/WebApp.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/WebSDK.git
 
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/.Alien.git
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/WebOS.git
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/WebApp.git
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/WebSDK.git
-
-pause
+echo.
+echo All Repositories Cloned Successfully!
 
 echo.
 set /p BRANCHNAME=Enter Branch Name For All Repositories: 
+set /p NEWID=Enter New Device ID: 
 
-echo Creating Branches...
+echo.
+echo Creating Branches And Updating .Alien...
 
 cd /d C:\Aliens\.Alien
+
+set OLDID=
+
+for /d %%i in (C*) do (
+    set OLDID=%%i
+)
+
+if defined OLDID (
+    call ren "%OLDID%" "%NEWID%"
+) else (
+    xcopy /E /I /Y Alien "%NEWID%"
+)
+
+cd /d C:\Aliens\.Alien\%NEWID%
+
+if exist manifest.json (
+    powershell -Command "(Get-Content manifest.json) -replace 'C[0-9][0-9][0-9][0-9]','%NEWID%' | Set-Content manifest.json"
+)
+
 git checkout -b %BRANCHNAME%
+git add .
+git commit -m "Created %NEWID%"
 git push -u origin %BRANCHNAME%
 
 cd /d C:\Aliens\Project
@@ -107,5 +132,6 @@ git checkout -b %BRANCHNAME%
 git push -u origin %BRANCHNAME%
 
 echo.
-echo All Branches Created Successfully!
+echo All Branches Created And Pushed Successfully!
+
 pause
