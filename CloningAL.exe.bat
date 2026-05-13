@@ -76,11 +76,24 @@ if exist "%OLDID%" (
     xcopy Alien "%NEWID%" /E /I /Y
 )
 
-cd /d C:\Aliens\.Alien\%NEWID%
+echo.
+echo ==========================================
+echo Please Update manifest.json Manually
+echo OLD ID = %OLDID%
+echo NEW ID = %NEWID%
+echo ==========================================
 
-if exist manifest.json (
-    powershell -Command "(Get-Content manifest.json) ^| ForEach-Object { $_ -replace '%OLDID%','%NEWID%' } ^| Set-Content manifest.json"
+pause
+
+set /p MANIFESTDONE=Type Done After Updating manifest.json : 
+
+if /I NOT "%MANIFESTDONE%"=="Done" (
+    echo Wrong Input
+    pause
+    exit
 )
+
+cd /d C:\Aliens\.Alien
 
 git checkout -b %BRANCHNAME%
 git add .
