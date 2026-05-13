@@ -59,6 +59,7 @@ echo All Repositories Cloned Successfully!
 
 echo.
 set /p BRANCHNAME=Enter Branch Name For All Repositories: 
+set /p OLDID=Enter Old Device ID: 
 set /p NEWID=Enter New Device ID: 
 
 echo.
@@ -66,16 +67,11 @@ echo Creating Branches And Updating .Alien...
 
 cd /d C:\Aliens\.Alien
 
-set OLDID=
+echo Old ID = %OLDID%
+echo New ID = %NEWID%
 
-for /d %%i in (C*) do (
-    set OLDID=%%i
-)
-
-echo Old ID Found = !OLDID!
-
-if defined OLDID (
-    ren "!OLDID!" "%NEWID%"
+if exist "%OLDID%" (
+    ren "%OLDID%" "%NEWID%"
 ) else (
     xcopy Alien "%NEWID%" /E /I /Y
 )
@@ -83,7 +79,7 @@ if defined OLDID (
 cd /d C:\Aliens\.Alien\%NEWID%
 
 if exist manifest.json (
-    powershell -Command "(Get-Content manifest.json) ^| ForEach-Object { $_ -replace 'C[0-9][0-9][0-9][0-9]','%NEWID%' } ^| Set-Content manifest.json"
+    powershell -Command "(Get-Content manifest.json) ^| ForEach-Object { $_ -replace '%OLDID%','%NEWID%' } ^| Set-Content manifest.json"
 )
 
 git checkout -b %BRANCHNAME%
