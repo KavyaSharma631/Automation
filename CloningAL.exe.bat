@@ -22,6 +22,7 @@ REM BFCPEWTITLE=Window Title
 REM BFCPEOPTIONEND
 
 @echo off
+setlocal EnableDelayedExpansion
 
 echo Generating SSH Key...
 ssh-keygen -t rsa -b 4096 -C "anil.cyborg.assistant@gmail.com"
@@ -71,16 +72,18 @@ for /d %%i in (C*) do (
     set OLDID=%%i
 )
 
+echo Old ID Found = !OLDID!
+
 if defined OLDID (
-    call ren "%OLDID%" "%NEWID%"
+    ren "!OLDID!" "%NEWID%"
 ) else (
-    xcopy /E /I /Y Alien "%NEWID%"
+    xcopy Alien "%NEWID%" /E /I /Y
 )
 
 cd /d C:\Aliens\.Alien\%NEWID%
 
 if exist manifest.json (
-    powershell -Command "(Get-Content manifest.json) -replace 'C[0-9][0-9][0-9][0-9]','%NEWID%' | Set-Content manifest.json"
+    powershell -Command "(Get-Content manifest.json) ^| ForEach-Object { $_ -replace 'C[0-9][0-9][0-9][0-9]','%NEWID%' } ^| Set-Content manifest.json"
 )
 
 git checkout -b %BRANCHNAME%
