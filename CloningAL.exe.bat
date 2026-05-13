@@ -37,6 +37,9 @@ if /I NOT "%SSHDONE%"=="Done" (
     exit
 )
 
+git config --global user.name "Anil Cyborg"
+git config --global user.email "anil.cyborg.assistant@gmail.com"
+
 mkdir C:\Aliens
 
 echo.
@@ -67,6 +70,9 @@ echo Creating Branches And Updating .Alien...
 
 cd /d C:\Aliens\.Alien
 
+git checkout -b %BRANCHNAME%
+
+echo.
 echo Old ID = %OLDID%
 echo New ID = %NEWID%
 
@@ -93,11 +99,10 @@ if /I NOT "%MANIFESTDONE%"=="Done" (
     exit
 )
 
-cd /d C:\Aliens\.Alien
-
-git checkout -b %BRANCHNAME%
 git add .
+
 git commit -m "Created %NEWID%"
+
 git push -u origin %BRANCHNAME%
 
 cd /d C:\Aliens\Project
