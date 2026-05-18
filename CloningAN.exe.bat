@@ -49,7 +49,7 @@ cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Blog.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Report.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Attendance.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Secret.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/.Alien.git
+cd /d C:\Aliens && git clone -b Empty git@github.com:Aliens-Company/.Alien.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/WebOS.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/WebApp.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/WebSDK.git
