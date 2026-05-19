@@ -50,6 +50,7 @@ cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/Cyborg.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Feedback.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Blog.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Docs.git
+cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Website.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Report.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Project.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Attendance.git
