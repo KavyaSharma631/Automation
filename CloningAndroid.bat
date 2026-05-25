@@ -26,7 +26,7 @@ REM BFCPEOPTIONEND
 setlocal EnableDelayedExpansion
 
 echo Generating SSH Key...
-ssh-keygen -t rsa -b 4096 -C "anil.cyborg.assistant@gmail.com"
+ssh-keygen -t rsa -b 4096 -C "my.pic.travle@gmail.com"
 
 echo.
 echo SSH Generate ho Gyi h Add kr de !
