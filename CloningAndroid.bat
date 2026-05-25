@@ -39,7 +39,7 @@ if /I NOT "%SSHDONE%"=="Done" (
 )
 
 git config --global user.name "Anil Cyborg"
-git config --global user.email "anil.cyborg.assistant@gmail.com"
+git config --global user.email "my.pic.travle@gmail.com"
 
 mkdir C:\Aliens
 
@@ -48,13 +48,6 @@ echo Cloning Repositories...
 
 cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/.github.git
 cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/Cyborg.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Feedback.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Blog.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Docs.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Report.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Project.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Attendance.git
-cd /d C:\Aliens && git clone -b Empty git@github.com:Aliens-Company/.Alien.git
 
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartApp.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartSDK.git
@@ -110,11 +103,6 @@ git commit -m "Created %NEWID%"
 
 git push -u origin %BRANCHNAME%
 
-cd /d C:\Aliens\Project
-git checkout main
-git pull origin main
-git checkout -b %BRANCHNAME%
-git push -u origin %BRANCHNAME%
 
 cd /d C:\Aliens\Attendance
 git checkout main
@@ -125,12 +113,6 @@ git push -u origin %BRANCHNAME%
 cd /d C:\Aliens\Report
 git checkout main
 git pull origin main
-git checkout -b %BRANCHNAME%
-git push -u origin %BRANCHNAME%
-
-cd /d C:\Aliens\Docs
-git checkout beta
-git pull origin beta
 git checkout -b %BRANCHNAME%
 git push -u origin %BRANCHNAME%
 
