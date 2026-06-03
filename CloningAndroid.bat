@@ -49,11 +49,11 @@ echo Cloning Repositories...
 cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/.github.git
 cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/Cyborg.git
 
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartApp.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartSDK.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartOS.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartBrand.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartDB.git
+cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/DartApp.git
+cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/DartSDK.git
+cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/DartOS.git
+cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/DartBrand.git
+cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/DartDB.git
 
 echo.
 echo All Repositories Cloned Successfully!
