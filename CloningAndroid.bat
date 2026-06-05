@@ -121,6 +121,18 @@ git pull origin main
 git checkout -b %BRANCHNAME%
 git push -u origin %BRANCHNAME%
 
+cd /d C:\Aliens\Project
+git checkout main
+git pull origin main
+git checkout -b %BRANCHNAME%
+git push -u origin %BRANCHNAME%
+
+cd /d C:\Aliens\.Alien
+git checkout Empty
+git pull origin Empty
+git checkout -b %BRANCHNAME%
+git push -u origin %BRANCHNAME%
+
 cd /d C:\Aliens\DartApp
 git checkout beta
 git pull origin beta
