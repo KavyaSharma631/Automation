@@ -50,10 +50,10 @@ cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/.github.git
 cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/Cyborg.git
 
 cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/DartApp.git
-cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/DartSDK.git
-cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/DartOS.git
-cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/DartBrand.git
-cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/DartDB.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartSDK.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartOS.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartBrand.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartDB.git
 
 echo.
 echo All Repositories Cloned Successfully!
@@ -123,26 +123,26 @@ git checkout -b %BRANCHNAME%
 git push -u origin %BRANCHNAME%
 
 cd /d C:\Aliens\DartSDK
-git checkout beta
-git pull origin beta
+git checkout main
+git pull origin main
 git checkout -b %BRANCHNAME%
 git push -u origin %BRANCHNAME%
 
 cd /d C:\Aliens\DartOS
-git checkout beta
-git pull origin beta
+git checkout main
+git pull origin main
 git checkout -b %BRANCHNAME%
 git push -u origin %BRANCHNAME%
 
 cd /d C:\Aliens\DartBrand
-git checkout beta
-git pull origin beta
+git checkout main
+git pull origin main
 git checkout -b %BRANCHNAME%
 git push -u origin %BRANCHNAME%
 
 cd /d C:\Aliens\DartDB
-git checkout beta
-git pull origin beta
+git checkout main
+git pull origin main
 git checkout -b %BRANCHNAME%
 git push -u origin %BRANCHNAME%
 
