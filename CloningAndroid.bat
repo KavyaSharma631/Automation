@@ -49,6 +49,11 @@ echo Cloning Repositories...
 cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/.github.git
 cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/Cyborg.git
 
+cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Project.git 
+cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Report.git 
+cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Attendance.git 
+cd C:/Aliens && git clone -b Empty git@github.com:Aliens-Company/.Alien.git 
+
 cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/DartApp.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartSDK.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/DartOS.git
