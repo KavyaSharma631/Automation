@@ -102,6 +102,12 @@ git pull origin main
 git checkout -b %BRANCHNAME%
 git push -u origin %BRANCHNAME%
 
+cd /d C:\Aliens\Website
+git checkout main
+git pull origin main
+git checkout -b %BRANCHNAME%
+git push -u origin %BRANCHNAME%
+
 cd /d C:\Aliens\Report
 git checkout main
 git pull origin main
