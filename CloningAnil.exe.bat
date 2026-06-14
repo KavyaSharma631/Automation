@@ -1,4 +1,18 @@
 @ECHO OFF
+setlocal EnableDelayedExpansion
+
+set SSH_STATUS=Failed
+
+set DOCS_STATUS=Failed
+set REPORT_STATUS=Failed
+set ATTENDANCE_STATUS=Failed
+set PROJECT_STATUS=Failed
+set ALIEN_STATUS=Failed
+
+set WEBSITE_STATUS=Failed
+set WEBOS_STATUS=Failed
+set WEBAPP_STATUS=Failed
+set WEBSDK_STATUS=Failed
 REM BFCPEOPTIONSTART
 REM Advanced BAT to EXE Converter www.BatToExeConverter.com
 REM BFCPEEXE=
@@ -25,6 +39,17 @@ REM BFCPEOPTIONEND
 
 echo Generating SSH Key...
 ssh-keygen -t rsa -b 4096 -C "ianilcyborg@gmail.com"
+
+
+if %errorlevel%==0 (
+    set SSH_STATUS=Already Done
+)
+
+ssh-keygen -t rsa -b 4096 -C "ianilcyborg@gmail.com"
+
+if %errorlevel%==0 (
+    set SSH_STATUS=Already Done
+)
 
 echo.
 echo SSH Generate ho Gyi h Add kr de !
@@ -140,5 +165,68 @@ git push -u origin %BRANCHNAME%
 
 echo.
 echo All Branches Created And Pushed Successfully!
+if exist C:\Aliens\Docs (
+    set DOCS_STATUS=Already Done
+)
 
+if exist C:\Aliens\Report (
+    set REPORT_STATUS=Already Done
+)
+
+if exist C:\Aliens\Attendance (
+    set ATTENDANCE_STATUS=Already Done
+)
+
+if exist C:\Aliens\Project (
+    set PROJECT_STATUS=Already Done
+)
+
+if exist C:\Aliens\.Alien (
+    set ALIEN_STATUS=Already Done
+)
+
+if exist C:\Aliens\Website (
+    set WEBSITE_STATUS=Already Done
+)
+
+if exist C:\Aliens\WebOS (
+    set WEBOS_STATUS=Already Done
+)
+
+if exist C:\Aliens\WebApp (
+    set WEBAPP_STATUS=Already Done
+)
+
+if exist C:\Aliens\WebSDK (
+    set WEBSDK_STATUS=Already Done
+)
+
+echo.
+echo ==========================================
+echo         FINAL STATUS REPORT
+echo ==========================================
+
+echo SSH Setup          = !SSH_STATUS!
+
+echo.
+echo ----- CORE REPOSITORIES -----
+
+echo Docs Repo          = !DOCS_STATUS!
+echo Report Repo        = !REPORT_STATUS!
+echo Attendance Repo    = !ATTENDANCE_STATUS!
+echo Project Repo       = !PROJECT_STATUS!
+echo .Alien Repo        = !ALIEN_STATUS!
+
+echo.
+echo ----- WEB REPOSITORIES -----
+
+echo Website Repo       = !WEBSITE_STATUS!
+echo WebOS Repo         = !WEBOS_STATUS!
+echo WebApp Repo        = !WEBAPP_STATUS!
+echo WebSDK Repo        = !WEBSDK_STATUS!
+
+echo.
+echo ==========================================
+echo      ALL TASKS COMPLETED
+echo ==========================================
 pause
