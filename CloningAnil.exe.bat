@@ -40,13 +40,6 @@ REM BFCPEOPTIONEND
 echo Generating SSH Key...
 ssh-keygen -t rsa -b 4096 -C "ianilcyborg@gmail.com"
 
-
-if %errorlevel%==0 (
-    set SSH_STATUS=Already Done
-)
-
-ssh-keygen -t rsa -b 4096 -C "ianilcyborg@gmail.com"
-
 if %errorlevel%==0 (
     set SSH_STATUS=Already Done
 )
@@ -62,7 +55,7 @@ if /I NOT "%SSHDONE%"=="Done" (
 )
 
 mkdir C:\Aliens
-
+if not exist C:\Aliens mkdir C:\Aliens
 echo Cloning Repositories...
 
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/.github.git
