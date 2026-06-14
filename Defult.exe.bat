@@ -13,7 +13,7 @@ REM BFCPEICONINDEX=-1
 REM BFCPEEMBEDDISPLAY=0
 REM BFCPEEMBEDDELETE=1
 REM BFCPEADMINEXE=0
-REM BFCPEINVISEXE=0acc
+REM BFCPEINVISEXE=0
 REM BFCPEVERINCLUDE=0
 REM BFCPEVERVERSION=1.0.0.0
 REM BFCPEVERPRODUCT=Product Name
@@ -70,15 +70,22 @@ if exist "%LocalAppData%\Programs\Microsoft VS Code Insiders\Code - Insiders.exe
     set VSCODE_STATUS=Already Done
 )
 
-curl -L -o C:\Automation\RonsDataEdit.exe <DOWNLOAD_LINK>
-
-start /wait C:\Automation\RonsDataEdit.exe /silent
 
 
+echo Opening Rons Data Edit Download Page...
+start "" "https://www.ronsplace.ca/products/ronsdataedit/download"
 
-if %errorlevel%==0 (
+echo.
+echo Install Rons Data Edit and type Done
+set /p RONSDONE=Type Done:
+
+if /I "%RONSDONE%"=="Done" (
     set RONS_STATUS=Already Done
+) else (
+    set RONS_STATUS=Failed
 )
+
+
 
 timeout /t 25 /nobreak
 
