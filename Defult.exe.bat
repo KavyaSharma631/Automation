@@ -1,10 +1,5 @@
 @ECHO OFF
-setlocal EnableDelayedExpansion
 
-set VSCODE_STATUS=Failed
-set PYTHON_STATUS=Failed
-set RONS_STATUS=Failed
-set THEME_STATUS=Failed
 REM BFCPEOPTIONSTART
 REM Advanced BAT to EXE Converter www.BatToExeConverter.com
 REM BFCPEEXE=
@@ -58,42 +53,18 @@ net user administrator *
 echo Installing Python...
 winget install --id Python.Python.3.12 -e --source winget
 echo Python installation completed.
-if %errorlevel%==0 (
-    set PYTHON_STATUS=Already Done
-)
+
 echo Downloading VS Code...
 curl -L -o C:\Automation\vscode.exe https://update.code.visualstudio.com/latest/win32-x64-user/insider
 
 echo Installing VS Code...
 start /wait C:\Automation\vscode.exe /silent
-if exist "%LocalAppData%\Programs\Microsoft VS Code Insiders\Code - Insiders.exe" (
-    set VSCODE_STATUS=Already Done
-)
-
-
-
-echo Opening Rons Data Edit Download Page...
-start "" "https://www.ronsplace.ca/products/ronsdataedit/download"
-
-echo.
-echo Install Rons Data Edit and type Done
-set /p RONSDONE=Type Done:
-
-if /I "%RONSDONE%"=="Done" (
-    set RONS_STATUS=Already Done
-) else (
-    set RONS_STATUS=Failed
-)
-
-
 
 timeout /t 25 /nobreak
 
 echo Installing Aliens Theme...
 call "%LocalAppData%\Programs\Microsoft VS Code Insiders\bin\code-insiders.cmd" --install-extension HimanshuNayak.theme-Aliens
-if %errorlevel%==0 (
-    set THEME_STATUS=Already Done
-)
+
 timeout /t 15 /nobreak
 
 echo Opening VS Code...
@@ -117,18 +88,3 @@ timeout /t 5 /nobreak
 
 taskkill /f /im "Code - Insiders.exe"
 start "" "%LocalAppData%\Programs\Microsoft VS Code Insiders\Code - Insiders.exe"
-
-echo.
-echo ==========================================
-echo         FINAL STATUS REPORT
-echo ==========================================
-
-echo Python Install     = !PYTHON_STATUS!
-echo VS Code Install    = !VSCODE_STATUS!
-echo Aliens Theme       = !THEME_STATUS!
-echo Rons Data Editor   = !RONS_STATUS!
-
-echo.
-echo ==========================================
-echo      ALL TASKS COMPLETED
-echo ==========================================
