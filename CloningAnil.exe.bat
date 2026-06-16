@@ -40,23 +40,77 @@ mkdir C:\Aliens
 
 echo Cloning Repositories...
 
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/.github.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Cyborg.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Copilot.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Project.git
-cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/Docs.git
-cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Website.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Blog.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Report.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Attendance.git
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Secret.git
-cd /d C:\Aliens && git clone -b Empty git@github.com:Aliens-Company/.Alien.git
-cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/WebOS.git
-cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/WebApp.git
-cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/WebSDK.git
+cd /d C:\Aliens
+
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/.github.git beta >nul 2>&1
+if %errorlevel%==0 (
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/.github.git
+) else (
+git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/.github.git
+)
+
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Cyborg.git
+
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Copilot.git beta >nul 2>&1
+if %errorlevel%==0 (
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Copilot.git
+) else (
+git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Copilot.git
+)
+
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Project.git beta >nul 2>&1
+if %errorlevel%==0 (
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Project.git
+) else (
+git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Project.git
+)
+
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Docs.git
+
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Website.git beta >nul 2>&1
+if %errorlevel%==0 (
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Website.git
+) else (
+git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Website.git
+)
+
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Blog.git beta >nul 2>&1
+if %errorlevel%==0 (
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Blog.git
+) else (
+git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Blog.git
+)
+
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Report.git beta >nul 2>&1
+if %errorlevel%==0 (
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Report.git
+) else (
+git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Report.git
+)
+
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Attendance.git beta >nul 2>&1
+if %errorlevel%==0 (
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Attendance.git
+) else (
+git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Attendance.git
+)
+
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Secret.git beta >nul 2>&1
+if %errorlevel%==0 (
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Secret.git
+) else (
+git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Secret.git
+)
+
+git clone -b Empty [git@github.com](mailto:git@github.com):Aliens-Company/.Alien.git
+
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/WebOS.git
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/WebApp.git
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/WebSDK.git
 
 echo.
 echo All Repositories Cloned Successfully!
+
 
 echo.
 set /p BRANCHNAME=Enter Branch Name For All Repositories: 
