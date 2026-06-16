@@ -42,74 +42,85 @@ echo Cloning Repositories...
 
 cd /d C:\Aliens
 
-git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/.github.git beta >nul 2>&1
-if %errorlevel%==0 (
+REM .github
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/.github.git beta | findstr /C:"refs/heads/beta" >nul
+if not errorlevel 1 (
 git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/.github.git
 ) else (
 git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/.github.git
 )
 
+REM Fixed beta repos
 git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Cyborg.git
+git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Docs.git
 
-git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Copilot.git beta >nul 2>&1
-if %errorlevel%==0 (
+REM Copilot
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Copilot.git beta | findstr /C:"refs/heads/beta" >nul
+if not errorlevel 1 (
 git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Copilot.git
 ) else (
 git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Copilot.git
 )
 
-git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Project.git beta >nul 2>&1
-if %errorlevel%==0 (
+REM Project
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Project.git beta | findstr /C:"refs/heads/beta" >nul
+if not errorlevel 1 (
 git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Project.git
 ) else (
 git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Project.git
 )
 
-git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Docs.git
-
-git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Website.git beta >nul 2>&1
-if %errorlevel%==0 (
+REM Website
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Website.git beta | findstr /C:"refs/heads/beta" >nul
+if not errorlevel 1 (
 git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Website.git
 ) else (
 git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Website.git
 )
 
-git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Blog.git beta >nul 2>&1
-if %errorlevel%==0 (
+REM Blog
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Blog.git beta | findstr /C:"refs/heads/beta" >nul
+if not errorlevel 1 (
 git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Blog.git
 ) else (
 git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Blog.git
 )
 
-git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Report.git beta >nul 2>&1
-if %errorlevel%==0 (
+REM Report
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Report.git beta | findstr /C:"refs/heads/beta" >nul
+if not errorlevel 1 (
 git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Report.git
 ) else (
 git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Report.git
 )
 
-git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Attendance.git beta >nul 2>&1
-if %errorlevel%==0 (
+REM Attendance
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Attendance.git beta | findstr /C:"refs/heads/beta" >nul
+if not errorlevel 1 (
 git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Attendance.git
 ) else (
 git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Attendance.git
 )
 
-git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Secret.git beta >nul 2>&1
-if %errorlevel%==0 (
+REM Secret
+git ls-remote --heads [git@github.com](mailto:git@github.com):Aliens-Company/Secret.git beta | findstr /C:"refs/heads/beta" >nul
+if not errorlevel 1 (
 git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/Secret.git
 ) else (
 git clone -b main [git@github.com](mailto:git@github.com):Aliens-Company/Secret.git
 )
 
+REM Empty branch - touch mat karo
 git clone -b Empty [git@github.com](mailto:git@github.com):Aliens-Company/.Alien.git
 
+REM Fixed beta repos
 git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/WebOS.git
 git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/WebApp.git
 git clone -b beta [git@github.com](mailto:git@github.com):Aliens-Company/WebSDK.git
 
 echo.
 echo All Repositories Cloned Successfully!
+
 
 
 echo.
