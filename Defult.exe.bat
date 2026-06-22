@@ -1,27 +1,3 @@
-@ECHO OFF
-
-REM BFCPEOPTIONSTART
-REM Advanced BAT to EXE Converter www.BatToExeConverter.com
-REM BFCPEEXE=
-REM BFCPEICON=
-REM BFCPEICONINDEX=-1
-REM BFCPEEMBEDDISPLAY=0
-REM BFCPEEMBEDDELETE=1
-REM BFCPEADMINEXE=0
-REM BFCPEINVISEXE=0
-REM BFCPEVERINCLUDE=0
-REM BFCPEVERVERSION=1.0.0.0
-REM BFCPEVERPRODUCT=Product Name
-REM BFCPEVERDESC=Product Description
-REM BFCPEVERCOMPANY=Your Company
-REM BFCPEVERCOPYRIGHT=Copyright Info
-REM BFCPEWINDOWCENTER=1
-REM BFCPEDISABLEQE=0
-REM BFCPEWINDOWHEIGHT=30
-REM BFCPEWINDOWWIDTH=120
-REM BFCPEWTITLE=Window Title
-REM BFCPEOPTIONEND
-
 @echo off
 
 mkdir C:\Automation
@@ -29,6 +5,12 @@ mkdir C:\Automation
 echo Enabling Dark Theme...
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /f
+
+echo Disabling Transparency Effects...
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v EnableTransparency /t REG_DWORD /d 0 /f
+
+taskkill /f /im explorer.exe >nul 2>&1
+start explorer.exe
 
 echo Setting Solid Black Background...
 reg add "HKCU\Control Panel\Colors" /v Background /t REG_SZ /d "0 0 0" /f
