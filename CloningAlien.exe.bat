@@ -60,7 +60,7 @@ echo Cloning Repositories...
 cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/.github.git
 if errorlevel 1 set CLONE_STATUS=Failed
 
-cd /d C:\Aliens && git clone -b beta  git@github.com:AliensCyborg/Cyborg.git
+cd /d C:\Aliens && git clone -b main  git@github.com:AliensCyborg/Cyborg.git
 if errorlevel 1 set CLONE_STATUS=Failed
 
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Feedback.git
