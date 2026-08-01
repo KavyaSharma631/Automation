@@ -41,7 +41,7 @@ mkdir C:\Aliens
 echo Cloning Repositories...
 
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/.github.git
-cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/Cyborg.git
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Cyborg.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Copilot.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Project.git
 cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/Docs.git
@@ -49,6 +49,7 @@ cd C:/Aliens && git clone -b main git@github.com:Aliens-Company/Website.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Blog.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Report.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Attendance.git
+cd C:/Aliens && git clone -b beta git@github.com:Aliens-Company/Wikipedia.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Secret.git
 cd /d C:\Aliens && git clone -b Empty git@github.com:Aliens-Company/.Alien.git
 cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/WebOS.git
@@ -111,6 +112,12 @@ git push -u origin %BRANCHNAME%
 cd /d C:\Aliens\Report
 git checkout main
 git pull origin main
+git checkout -b %BRANCHNAME%
+git push -u origin %BRANCHNAME%
+
+cd /d C:\Aliens\Wikipedia
+git checkout beta
+git pull origin beta
 git checkout -b %BRANCHNAME%
 git push -u origin %BRANCHNAME%
 
