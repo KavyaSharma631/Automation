@@ -29,7 +29,7 @@ echo ==========================================
 echo         SSH KEY GENERATION
 echo ==========================================
 
-ssh-keygen -t rsa -b 4096 -C "anil.cyborg.assistant@gmail.com"
+ssh-keygen -t rsa -b 4096 -C "ihimanshunayak@hotmail.com"
 
 echo.
 echo SSH Generate ho Gyi h Add kr de !
@@ -51,8 +51,8 @@ echo ==========================================
 echo         GIT CONFIGURATION
 echo ==========================================
 
-git config --global user.name "Anil Cyborg"
-git config --global user.email "anil.cyborg.assistant@gmail.com"
+git config --global user.name "anilcyborg-python"
+git config --global user.email "ihimanshunayak@hotmail.com"
 
 if not exist C:\Aliens (
     mkdir C:\Aliens
