@@ -63,7 +63,9 @@ echo ==========================================
 echo         CLONING REPOSITORIES
 echo ==========================================
 
-cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Docs.git
+cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/.github.git
+cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/Cyborg.git
+cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/Docs.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Report.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Attendance.git
 cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Project.git
@@ -74,11 +76,11 @@ set /p PYCONFIRM=Clone Python Repositories? (YES/NO):
 
 if /I "%PYCONFIRM%"=="YES" (
 
-    cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/PyApp.git
-    cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/PySDK.git
-    cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/PyOS.git
-    cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/PyBrand.git
-    cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/PyDB.git
+    cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/PyApp.git
+    cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/PySDK.git
+    cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/PyOS.git
+    cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/PyBrand.git
+    cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/PyDB.git
 )
 
 echo.
@@ -96,8 +98,8 @@ echo      CORE REPOSITORIES BRANCHES
 echo ==========================================
 
 cd /d C:\Aliens\Docs
-git checkout main
-git pull origin main
+git checkout beta
+git pull origin beta
 git checkout -b %BRANCHNAME%
 git push -u origin %BRANCHNAME%
 
@@ -169,32 +171,32 @@ echo ==========================================
 if /I "%PYCONFIRM%"=="YES" (
 
     cd /d C:\Aliens\PyApp
-    git checkout main
-    git pull origin main
+    git checkout beta
+    git pull origin beta
     git checkout -b %BRANCHNAME%
     git push -u origin %BRANCHNAME%
 
     cd /d C:\Aliens\PySDK
-    git checkout main
-    git pull origin main
+    git checkout beta
+    git pull origin beta
     git checkout -b %BRANCHNAME%
     git push -u origin %BRANCHNAME%
 
     cd /d C:\Aliens\PyOS
-    git checkout main
-    git pull origin main
+    git checkout beta
+    git pull origin beta
     git checkout -b %BRANCHNAME%
     git push -u origin %BRANCHNAME%
 
     cd /d C:\Aliens\PyBrand
-    git checkout main
-    git pull origin main
+    git checkout beta
+    git pull origin beta
     git checkout -b %BRANCHNAME%
     git push -u origin %BRANCHNAME%
 
     cd /d C:\Aliens\PyDB
-    git checkout main
-    git pull origin main
+    git checkout beta
+    git pull origin beta
     git checkout -b %BRANCHNAME%
     git push -u origin %BRANCHNAME%
 )
