@@ -197,6 +197,14 @@ if errorlevel 1 git checkout %BRANCHNAME%
 git push -u origin %BRANCHNAME%
 if errorlevel 1 set PUSH_STATUS=Failed
 
+cd /d C:\Aliens\Website
+git checkout main
+git pull origin main
+git checkout -b %BRANCHNAME%
+if errorlevel 1 git checkout %BRANCHNAME%
+git push -u origin %BRANCHNAME%
+if errorlevel 1 set PUSH_STATUS=Failed
+
 echo.
 echo ==========================================
 echo          FINAL STATUS REPORT
