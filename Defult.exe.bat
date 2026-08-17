@@ -36,6 +36,25 @@ echo Installing Python...
 winget install --id Python.Python.3.12 -e --source winget
 echo Python installation completed.
 
+
+echo.
+echo ========================================
+echo Downloading Tailscale for Windows...
+echo ========================================
+
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$url='https://pkgs.tailscale.com/stable/tailscale-setup-latest.exe'; $out='C:\Automation\tailscale-setup.exe'; Invoke-WebRequest -Uri $url -OutFile $out -UseBasicParsing"
+
+if exist "C:\Automation\tailscale-setup.exe" (
+    echo Tailscale downloaded successfully.
+    echo Installing Tailscale...
+    start /wait "" "C:\Automation\tailscale-setup.exe" /quiet
+    echo Tailscale installation completed.
+) else (
+    echo ERROR: Tailscale download failed.
+)
+
+echo.
+
 echo Downloading VS Code...
 curl -L -o C:\Automation\vscode.exe https://update.code.visualstudio.com/latest/win32-x64-user/insider
 
