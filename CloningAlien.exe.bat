@@ -52,45 +52,50 @@ if /I NOT "%SSHDONE%"=="Done" (
 git config --global user.name "Anil Cyborg"
 git config --global user.email "anil.cyborg.assistant@gmail.com"
 
-echo.
-echo ==========================================
-echo Starting All Repository Clones...
-echo ==========================================
-
 if not exist C:\Aliens mkdir C:\Aliens
 
-cd /d C:\Aliens
+echo.
+echo Cloning Repositories...
 
-start "" /b cmd /c "git clone -b main git@github.com:AliensCyborg/.github.git > C:\Automation\clone_github.log 2>&1"
-start "" /b cmd /c "git clone -b main git@github.com:AliensCyborg/Cyborg.git > C:\Automation\clone_cyborg.log 2>&1"
-start "" /b cmd /c "git clone -b main git@github.com:Aliens-Company/Feedback.git > C:\Automation\clone_feedback.log 2>&1"
-start "" /b cmd /c "git clone -b main git@github.com:Aliens-Company/Blog.git > C:\Automation\clone_blog.log 2>&1"
-start "" /b cmd /c "git clone -b beta git@github.com:Aliens-Company/Docs.git > C:\Automation\clone_docs.log 2>&1"
-start "" /b cmd /c "git clone -b main git@github.com:Aliens-Company/Website.git > C:\Automation\clone_website.log 2>&1"
-start "" /b cmd /c "git clone -b main git@github.com:Aliens-Company/Report.git > C:\Automation\clone_report.log 2>&1"
-start "" /b cmd /c "git clone -b main git@github.com:Aliens-Company/Project.git > C:\Automation\clone_project.log 2>&1"
-start "" /b cmd /c "git clone -b main git@github.com:Aliens-Company/Attendance.git > C:\Automation\clone_attendance.log 2>&1"
-start "" /b cmd /c "git clone -b Empty git@github.com:Aliens-Company/.Alien.git > C:\Automation\clone_alien.log 2>&1"
-start "" /b cmd /c "git clone -b beta git@github.com:Aliens-Company/WebApp.git > C:\Automation\clone_webapp.log 2>&1"
-start "" /b cmd /c "git clone -b beta git@github.com:Aliens-Company/WebSDK.git > C:\Automation\clone_websdk.log 2>&1"
+cd /d C:\Aliens && git clone -b main git@github.com:AliensCyborg/.github.git
+if errorlevel 1 set CLONE_STATUS=Failed
+
+cd /d C:\Aliens && git clone -b main  git@github.com:AliensCyborg/Cyborg.git
+if errorlevel 1 set CLONE_STATUS=Failed
+
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Feedback.git
+if errorlevel 1 set CLONE_STATUS=Failed
+
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Blog.git
+if errorlevel 1 set CLONE_STATUS=Failed
+
+cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/Docs.git
+if errorlevel 1 set CLONE_STATUS=Failed
+
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Website.git
+if errorlevel 1 set CLONE_STATUS=Failed
+
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Report.git
+if errorlevel 1 set CLONE_STATUS=Failed
+
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Project.git
+if errorlevel 1 set CLONE_STATUS=Failed
+
+cd /d C:\Aliens && git clone -b main git@github.com:Aliens-Company/Attendance.git
+if errorlevel 1 set CLONE_STATUS=Failed
+
+cd /d C:\Aliens && git clone -b Empty git@github.com:Aliens-Company/.Alien.git
+if errorlevel 1 set CLONE_STATUS=Failed
+
+cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/WebApp.git
+if errorlevel 1 set CLONE_STATUS=Failed
+
+cd /d C:\Aliens && git clone -b beta git@github.com:Aliens-Company/WebSDK.git
+if errorlevel 1 set CLONE_STATUS=Failed
 
 echo.
-echo All repository cloning processes have been started.
-echo Waiting for all repositories to finish...
+echo All Repositories Cloning Process Completed!
 
-:WAIT_CLONES
-timeout /t 3 /nobreak >nul
-
-tasklist /FI "IMAGENAME eq git.exe" 2>nul | find /I "git.exe" >nul
-
-if not errorlevel 1 (
-    goto WAIT_CLONES
-)
-
-echo.
-echo ==========================================
-echo All Repository Cloning Processes Finished!
-echo ==========================================
 echo.
 set /p BRANCHNAME=Enter Branch Name For All Repositories:
 set /p OLDID=Enter Old Device ID:
