@@ -18,6 +18,90 @@ reg add "HKCU\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "" /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers" /v BackgroundType /t REG_DWORD /d 1 /f
 
 powershell -command "Add-Type -TypeDefinition 'using System;using System.Runtime.InteropServices;public class W{[DllImport(\"user32.dll\")]public static extern bool SystemParametersInfo(int uAction,int uParam,string lpvParam,int fuWinIni);}'; [W]::SystemParametersInfo(20,0,'',3)"
+echo.
+echo ========================================
+echo Disabling AWS EC2 Wallpaper...
+echo ========================================
+
+REM ============================================================
+REM 1. Delete AWS setWallpaper Startup shortcut
+REM ============================================================
+
+set "AWS_STARTUP=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\setwallpaper.lnk"
+
+if exist "%AWS_STARTUP%" (
+    del /f /q "%AWS_STARTUP%"
+    echo [OK] AWS setWallpaper shortcut deleted.
+) else (
+    echo [INFO] AWS setWallpaper shortcut not found.
+)
+
+REM ============================================================
+REM 2. Backup EC2Launch configuration
+REM ============================================================
+
+set "AWS_CONFIG=C:\ProgramData\Amazon\EC2Launch\config\agent-config.yml"
+set "AWS_BACKUP=C:\ProgramData\Amazon\EC2Launch\config\agent-config.yml.backup"
+
+if exist "%AWS_CONFIG%" (
+    copy /Y "%AWS_CONFIG%" "%AWS_BACKUP%" >nul
+    echo [OK] EC2Launch configuration backup created.
+) else (
+    echo [ERROR] agent-config.yml not found.
+)
+
+REM ============================================================
+REM 3. Remove ONLY setWallpaper task from agent-config.yml
+REM ============================================================
+
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+"$config='C:\ProgramData\Amazon\EC2Launch\config\agent-config.yml'; ^
+if (Test-Path $config) { ^
+    $lines=Get-Content $config; ^
+    $result=New-Object System.Collections.Generic.List[string]; ^
+    $skip=$false; ^
+    foreach ($line in $lines) { ^
+        if ($line -match '^\s*-\s*task:\s*setWallpaper\s*$') { ^
+            $skip=$true; ^
+            continue ^
+        } ^
+        if ($skip) { ^
+            if ($line -match '^\s*-\s*task:') { ^
+                $skip=$false; ^
+                $result.Add($line); ^
+            } elseif ($line -match '^\s*-\s*stage:') { ^
+                $skip=$false; ^
+                $result.Add($line); ^
+            } else { ^
+                continue ^
+            } ^
+        } else { ^
+            $result.Add($line) ^
+        } ^
+    } ^
+    Set-Content -Path $config -Value $result -Encoding UTF8; ^
+    Write-Host '[OK] setWallpaper task removed from agent-config.yml.' ^
+} else { ^
+    Write-Host '[ERROR] agent-config.yml not found.' ^
+}"
+
+REM ============================================================
+REM 4. Verify setWallpaper is removed
+REM ============================================================
+
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+"$config='C:\ProgramData\Amazon\EC2Launch\config\agent-config.yml'; ^
+if (Test-Path $config) { ^
+    if (Select-String -Path $config -Pattern 'setWallpaper' -Quiet) { ^
+        Write-Host '[WARNING] setWallpaper is still present!' ^
+    } else { ^
+        Write-Host '[OK] setWallpaper successfully removed.' ^
+    } ^
+}"
+
+echo.
+echo AWS EC2 Wallpaper cleanup completed.
+echo.
 
 echo.
 set /p NEWPCNAME=Enter New PC Name:
